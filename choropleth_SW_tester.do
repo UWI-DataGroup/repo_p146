@@ -28,8 +28,8 @@
     local shapepath "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Shapefiles"
 
     ** Close any open log file and open a new log file
-	capture log close
-	log using "`logpath'\choropleth_SW_tester", replace
+	*capture log close
+	*log using "`logpath'\choropleth_SW_tester", replace
 ** HEADER -----------------------------------------------------
 
 
@@ -41,7 +41,7 @@
 **          ANOTHER POSSIBLE REASON WHY BUFFERS DIFFERED in original graphic
 ** ------------------------------------------------------------------------------------
 
-tempfile all Tfd1 Tfd15 Tfd2 Tfd25 Tfd3 Tfd35 Tfd4 Tfd45 Tfd5 Tdf10
+tempfile all Tfd1 Tfd2 Tfd3 Tfd4 Tfd5 Tfd6 Tfd7 Tfd8 Tfd9 Tfd10
 
 import excel using "`datapath'\buildingcentroids_withED_TableToExcel.xlsx" , first clear
 rename OBJECTID oid 
@@ -70,87 +70,87 @@ keep oid out1
  import excel using "`datapath'\buildings_in_1_5kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
  rename ENUM_NO1 ed
- gen out1 = 0
+ gen out2 = 0
  replace oid = 200000 if oid==33463 & ed==232 
-keep oid out1 
- save `Tfd15', replace
+keep oid out2
+ save `Tfd2', replace
  
   
 /// ** 2km buffer
 import excel using "`datapath'\buildings_in_2kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out2 = 0
+gen out3 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out2 
-save `Tfd2', replace
+keep oid out3
+save `Tfd3', replace
 
 
 /// ** 2.5km buffer
 import excel using "`datapath'\buildings_in_2_5kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out2 = 0
+gen out4 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out2 
-save `Tfd25', replace
+keep oid out4
+save `Tfd4', replace
 
 
 /// ** 3km buffer
 import excel using "`datapath'\buildings_in_3kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out3 = 0
+gen out5 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out3 
-save `Tfd3', replace
+keep oid out5 
+save `Tfd5', replace
 
 /// ** 3.5km buffer
 import excel using "`datapath'\buildings_in_3_5kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out3 = 0
+gen out6 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out3 
-save `Tfd35', replace
+keep oid out6
+save `Tfd6', replace
 
 /// ** 4km buffer
 import excel using "`datapath'\buildings_in_4kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out3 = 0
+gen out7 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out3 
-save `Tfd4', replace
+keep oid out7
+save `Tfd7', replace
 
 
 /// ** 4.5km buffer
 import excel using "`datapath'\buildings_in_4_5kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out3 = 0
+gen out8 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out3 
-save `Tfd45', replace
+keep oid out8
+save `Tfd8', replace
 
 
 /// ** 5km buffer
 import excel using "`datapath'\buildings_in_5kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out3 = 0
+gen out9 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out3 
-save `Tfd5', replace
+keep oid out9
+save `Tfd9', replace
 
 
 /// ** 10km buffer
 import excel using "`datapath'\buildings_in_10kmBuffer.xlsx" , first clear
 rename OBJECTID_1 oid 
 rename ENUM_NO1 ed
-gen out3 = 0
+gen out10 = 0
 replace oid = 200000 if oid==33463 & ed==232 
-keep oid out3 
+keep oid out10 
 save `Tfd10', replace
 
 
@@ -161,21 +161,21 @@ save `Tfd10', replace
 use `all', clear
 merge 1:1 oid using `Tfd1'
 drop _merge
-merge 1:1 oid using `Tfd15'
-drop _merge
 merge 1:1 oid using `Tfd2'
-drop _merge
-merge 1:1 oid using `Tfd25'
 drop _merge
 merge 1:1 oid using `Tfd3'
 drop _merge
-merge 1:1 oid using `Tfd35'
-drop _merge
 merge 1:1 oid using `Tfd4'
 drop _merge
-merge 1:1 oid using `Tfd45'
-drop _merge
 merge 1:1 oid using `Tfd5'
+drop _merge
+merge 1:1 oid using `Tfd6'
+drop _merge
+merge 1:1 oid using `Tfd7'
+drop _merge
+merge 1:1 oid using `Tfd8'
+drop _merge
+merge 1:1 oid using `Tfd9'
 drop _merge
 merge 1:1 oid using `Tfd10'
 drop _merge
@@ -194,7 +194,7 @@ gen denom = 1
 forval x=1(1)10 {
     replace out`x' = 1 if out`x'==. 
     }
-collapse (sum) denom out1 out15 out2 out25 out3 out35 out4 out45 out5 out10 , by(ed) 
+collapse (sum) denom out1 out2 out3 out4 out5 out6 out7 out8 out9 out10 , by(ed) 
 forval x=1(1)10 {
     gen pout`x'= (out`x'/denom) * 100
     gen Tfd`x' = 0
@@ -223,7 +223,7 @@ save Testerbrb_shp.dta, replace
 use Testerbrb_ed, clear
 rename ENUM_NO1 ed
 merge 1:1 ed using "`datapath'\Testerbrb_fd"
-keep if _merge==10
+keep if _merge==3
 drop _merge 
 drop Buff* k Inside* Outside* Food* out*
 save Testerbrb_ed, replace
@@ -240,7 +240,7 @@ local nondesert `r(p10)'
 ** BARBADOS ED LAYER. FOOD DESERT MAPS
 ** Maps at 1km, 2km, 3km buffers
 ** ***************************************************
-forval x = 1(1)3 {
+forval x = 1(1)10 {
     #delimit ; 
     spmap Tfd`x' using Testerbrb_ed_shp
         ,
@@ -253,12 +253,13 @@ forval x = 1(1)3 {
             ) 
         legstyle(0) 
         name(brb_fd`x')
-        saving("`outputpath'/Testerbrb_fd`x'", replace)
+       /// saving("`outputpath'/Testerbrb_fd`x'", replace)
         ;
     #delimit cr
-    graph export "`outputpath'/Testerbrb_fd`x'.png", replace width(1500)
+   * graph export "`outputpath'/Testerbrb_fd`x'.png", replace width(1500)
 }
 
+/*
 ** Post MAPS to PDF
 ** ------------------------------------------------------
 ** PDF REGIONAL REPORT (COUNTS OF CONFIRMED CASES)
