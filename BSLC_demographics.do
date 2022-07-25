@@ -48,7 +48,7 @@ label variable Uniqueid "Unique ID"
 order Uniqueid, after(hhid)
 
 ** Keeping Key Variables
-keep hhid Uniqueid weight psu stratum psus_N id q1_03 q1_04 q1_05 q1_06 q3_22 q5_01p q5_01o q5_02 q5_06a q5_06b q10_02a q10_02b
+keep hhid Uniqueid weight psu stratum psus_N id ENUM_NO1 q1_03 q1_04 q1_05 q1_06 q3_22 q5_01p q5_01o q5_02 q5_06a q5_06b q10_02a q10_02b
 
 **----------------------------------------------------------------------------------------
 ** PART 2. Calculating BMI for each adult
@@ -64,7 +64,7 @@ replace weight2 = q5_01o * 0.028349523
 
 gen weightKG=. // total weight in Kg
 replace weightKG = weight1 + weight2
-replace weightKG = weight 1 if weight2==.
+replace weightKG = weight1 if weight2==.
 
 ** convert height to meters
 
@@ -99,12 +99,16 @@ replace BMI_cat=. if BMI==.
 label define bmi_cat 1"underweight" 2"normal" 3"overweight" 4"obesity1" 5"obesity2" 6"obesity3"
 label values BMI_cat bmi_cat
 
+
+
+merge m:m ENUM_NO1 using "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\ArcGIS\Paper1_ Deserts_Swamps\RFEI_mRFEI_EDs.dta"
+
 **----------------------------------------------------------------------------------------
 ** PART 3. Generating the mean and median BMI per ED
 **---------------------------------------------------------------------------------------
 
-collapse (mean) meanBMI=BMI (median) medBMI=BMI (count) count=BMI, by (psu)
-save "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\IDB\BMI_ED.dta", replace
+**collapse (mean) meanBMI=BMI (median) medBMI=BMI (count) count=BMI (sum), by (ENUM_NO1)
+**save "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\IDB\BMI_ED_individuals.dta", replace
 
 
 

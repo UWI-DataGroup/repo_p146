@@ -242,9 +242,9 @@ local nondesert `r(p10)'
 ** ***************************************************
 forval x = 1(1)10 {
     #delimit ; 
-    spmap Tfd`x' using Testerbrb_ed_shp
+    spmap Tfd`x' using Testerbrb_ed_shp, replace
         ,
-        fysize(100) 
+        
         id(_ID)
         ocolor(gs14 ..) fcolor("`nondesert'*0.75" "`desert'*0.75" ) osize(0.04 ..)  
         legend(pos(2) size(*1.5) 
@@ -253,10 +253,10 @@ forval x = 1(1)10 {
             ) 
         legstyle(0) 
         name(brb_fd`x')
-       /// saving("`outputpath'/Testerbrb_fd`x'", replace)
+       saving("`outputpath'/Testerbrb_fd`x'", replace)
         ;
     #delimit cr
-   * graph export "`outputpath'/Testerbrb_fd`x'.png", replace width(1500)
+    //graph export "`outputpath'/Testerbrb_fd`x'.png", replace width(1500)
 }
 
 /*
