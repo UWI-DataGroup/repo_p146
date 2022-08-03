@@ -91,8 +91,17 @@ label variable H_Dis_Cat "Distance to Healthy"
 label values H_Dis_Cat distance_cat
 
 
+
+
+** ----------------------------------------------------------------------------------
+** PART 6: Merging SES data
+** ----------------------------------------------------------------------------------
+merge 1:1 ENUM_NO1 using "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\BSS\SES\SES_index_Stephanie.dta"
+drop _merge
+
+
 **-----------------------------------------------------------------------------------------
-** PART 6: Saving new dataset - This new dataset contains all relevant data at the ED level
+** PART 7: Saving new dataset - This new dataset contains all relevant data at the ED level
 ** -----------------------------------------------------------------------------------------
 save "`datapath'\Combined_EDs_01.dta", replace
 
