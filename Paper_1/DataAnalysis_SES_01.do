@@ -115,15 +115,15 @@ logistic Tfd1 hsize_mean
 logistic Tfd1 per_t_non_black
 logistic Tfd1 per_t_young_age_depend
 logistic Tfd1 per_t_old_age_depend
-logistic Tfd1 per_htenure_owned // **
-logistic Tfd1 per_smother_total // ** 
-logistic Tfd1 per_t_education_tertiary // **
-logistic Tfd1 per_t_education_less_secondary // **
+logistic Tfd1 per_htenure_owned // ** Odds ratio :  1.25
+logistic Tfd1 per_smother_total // ** Odds ratio : 0.896
+logistic Tfd1 per_t_education_tertiary // ** Odds ratio : 1.03
+logistic Tfd1 per_t_education_less_secondary // ** Odds ratio : 1.05
 logistic Tfd1 per_t_income_0_49
 logistic Tfd1 per_t_high_income
-logistic Tfd1 per_crime_victim // **
+logistic Tfd1 per_crime_victim // ** odds ratio : 0.78
 logistic Tfd1 per_bathroom_0
-logistic Tfd1 per_toilet_presence // **
+logistic Tfd1 per_toilet_presence // ** odds ratio : 0.966  
 logistic Tfd1 per_vehicles_0 // ** 
 logistic Tfd1 per_electricity
 logistic Tfd1 per_amentities_stove
@@ -144,6 +144,7 @@ logistic Tfd1 per_t_prof_occupation // **
 logistic Tfd1 per_t_prof_techoccupation // **
 logistic Tfd1 per_t_prof_n_techoccupation // **
 logistic Tfd1 SES
+
 
 
 ** Outcome variable: Food Desert at 1.5km buffer 
