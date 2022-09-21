@@ -88,6 +88,9 @@ label define fv5 0 "adequate fruit and veg" 1 "inadequate fruit and veg"
 ** Outcome = Fruit and Veg intake
 ** Predictor = Distance
 **--------------------------------------------------------------------------------------------------------------
+ 
+ replace Distance_Healthy = Distance_Healthy/100
+ replace Distance_Unhealthy = Distance_Unhealthy/100
 
 logistic fv5 Distance_Healthy // Odds ratio 1.0 | p-value 0.044 | 95% CI 1.0 - 1.0
 logistic fv5 Distance_Unhealthy 
