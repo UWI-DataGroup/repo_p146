@@ -4,7 +4,7 @@
     //  project:				    FoodScapes
     //  analysts:				    Stephanie Whiteman
     // 	date last modified	    	20-August-2022
-    //  algorithm task			    
+    //  algorithm task			    Explorinmg the relationship between Access, proximity and consumption
 
     ** General algorithm set-up
     version 16
@@ -32,15 +32,80 @@
     //log using "`logpath'\DataAnalysis_SES_01", replace
 
 ** ----------------------------------------------------------------------------------
-** PART 1 : Importing combined dataset
+** PART 1 : Merging Health of the Nation Data with the ED combined dataset
 ** ----------------------------------------------------------------------------------
 
-    use "`datapath'\Combined_EDs_01.dta"
+use "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\HoTN\hotn_v41_sw.dta"
+merge m:1 ed using "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\ArcGIS\Paper1_ Deserts_Swamps\Combined_EDs_01.dta"
+drop _merge
 
-** -----------------------------------------------------------------------------------
-** PART 2: Creating ratios for each ED on the distance to healthy vs unhealthy
-**------------------------------------------------------------------------------------
+**------------------------------------------------------------------------------------------
+** PART 2: Generating New Variables
+**------------------------------------------------------------------------------------------
 
-    gen DistanceRatio= Distance_Unhealthy / Distance_Healthy
+** Distance Ratio
+gen DistanceRatio= Distance_Unhealthy / Distance_Healthy
 
-    
+** Weekly fruit serving
+gen fruitserv_wk = .
+replace fruitserv_wk = fruit* fruit_s
+
+** Daily Fruit serving
+gen fruitserv_day =.
+replace fruitserv_day = fruitserv_wk/7
+
+** Weekly veg serving
+gen vegserv_wk = .
+replace vegserv_wk = veg* veg_s
+
+** Daily Veg serving
+gen vegserv_day =.
+replace vegserv_day = vegserv_wk/7
+
+** Combined Daily Fruit and Veg servings
+egen servings = rowtotal(fruitserv_day vegserv_day) if vegserv_day !=. & fruitserv_day !=.
+label variable servings "combined daily fruit and veg servings"
+
+
+** Inadequate Fruit and Veg intake
+gen fv5 = .
+replace fv5 = 0 if servings >=5 & servings <.
+replace fv5 = 1 if servings < 5
+label variable fv5 "inadequate fruit and veg consumption"
+label define fv5 0 "adequate fruit and veg" 1 "inadequate fruit and veg"
+
+
+**------------------------------------------------------------------------------------------------------------
+** PART 3: Exploring the relationship between Fruit and Veg intake and the distance to Healthy and Unhealthy food stores
+
+** Outcome = Fruit and Veg intake
+** Predictor = Distance
+**--------------------------------------------------------------------------------------------------------------
+
+logistic fv5 Distance_Healthy // Odds ratio 1.0 | p-value 0.044 | 95% CI 1.0 - 1.0
+logistic fv5 Distance_Unhealthy 
+logistic fv5 DistanceRatio // Odds ratio 0.74 | p-value 0.033 | 95% CI 0.56 - 0.97
+
+regress servings Distance_Healthy
+regress servings Distance_Unhealthy
+regress servings DistanceRatio
+
+
+regress fruitserv_wk Distance_Healthy
+regress fruitserv_day Distance_Healthy
+regress vegserv_wk Distance_Healthy
+regress vegserv_day Distance_Healthy
+
+regress fruitserv_wk Distance_Unhealthy
+regress fruitserv_day Distance_Unhealthy
+regress vegserv_wk Distance_Unhealthy
+regress vegserv_day Distance_Unhealthy
+
+regress fruitserv_wk DistanceRatio
+regress fruitserv_day DistanceRatio
+regress vegserv_wk DistanceRatio
+regress vegserv_day DistanceRatio
+
+
+  
+
