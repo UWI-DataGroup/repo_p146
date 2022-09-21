@@ -43,8 +43,15 @@ drop _merge
 ** PART 2: Generating New Variables
 **------------------------------------------------------------------------------------------
 
-** Distance Ratio
+** Distance Ratio - Continous
 gen DistanceRatio= Distance_Unhealthy / Distance_Healthy
+
+** Distance Ratio- Binary (1 = "bad" , 0="good")
+
+gen DistanceRatio_Bi=.
+replace DistanceRatio_Bi = 1 if DistanceRatio <1
+replace DistanceRatio_Bi = 0 if DistanceRatio >=1 & DistanceRatio <.
+
 
 ** Weekly fruit serving
 gen fruitserv_wk = .
@@ -107,5 +114,10 @@ regress vegserv_wk DistanceRatio
 regress vegserv_day DistanceRatio
 
 
-  
+logistic fv5 DistanceRatio_Bi // Odds Ratio 1.7 | p-value 0.004 | 95% CI 1.18,2.46
+regress fruitserv_wk DistanceRatio_Bi
+regress fruitserv_day DistanceRatio_Bi
+regress vegserv_wk DistanceRatio_Bi // Odds Ratio -0.84 |p-value 0.041 | 95% CI -1.65, -0.033
+regress vegserv_day DistanceRatio_Bi // Odds ratio -0.12 | p-value 0.041 |95% CI -0.23, -0.004
+regress servings DistanceRatio_Bi // Odds Ration - 0.28 | p-value 0.019 | 95% CI -0.58, -0.046
 
