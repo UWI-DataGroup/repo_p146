@@ -46,11 +46,13 @@ drop _merge
 ** Distance Ratio - Continous
 gen DistanceRatio= Distance_Unhealthy / Distance_Healthy
 
-** Distance Ratio- Binary (1 = "bad" , 0="good")
+
+** Distance Ratio- Binary (0 = "bad" , 1="good")
 
 gen DistanceRatio_Bi=.
-replace DistanceRatio_Bi = 1 if DistanceRatio <1
-replace DistanceRatio_Bi = 0 if DistanceRatio >=1 & DistanceRatio <.
+replace DistanceRatio_Bi = 0 if DistanceRatio <1 // unhealthy outlets are closer than healthy - BAD
+replace DistanceRatio_Bi = 1 if DistanceRatio >=1 & DistanceRatio <. // unhealthy outlets are further away than healthy - GOOD
+
 
 
 ** Weekly fruit serving
