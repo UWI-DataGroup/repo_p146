@@ -128,6 +128,7 @@ save "`datapath'\ED_Area.dta"'
 
 clear
 
+
 use "`datapath'\Combined_EDs_02.dta"
 merge 1:1 ed using "`datapath'\ED_Area.dta"
 drop _merge
