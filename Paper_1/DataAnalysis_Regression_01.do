@@ -102,6 +102,7 @@ gen height_meters = height/100
 gen BMI = weight / (height_meters^2)
 
 
+
 ** Distance Ratio - Continous
 gen DistanceRatio= Distance_Unhealthy / Distance_Healthy
 
