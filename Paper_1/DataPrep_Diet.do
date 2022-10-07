@@ -230,3 +230,14 @@
     replace IDD=9 if DD_FoodCat=14
 
     
+
+    *******************************************************************************************
+    *   CODE CHUNK FOR CREATING THE DIETARY DIVERSITY SCORE
+    *******************************************************************************************
+
+    keep pid foodcat
+    sort pid foodcat
+    duplicates drop (pid foodcat), force
+    bysort pid: gen x=_n
+    by pid: gen ntotg = _N
+    collapse (mean) ntotg, by(pid)
