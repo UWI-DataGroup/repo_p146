@@ -96,7 +96,7 @@
     poisson vegserv_wk Distance_Unhealthy car */
         
 **----------------------------------------------------------------------
-** PART 3
+** PART 3: Creating necessary variables: Predictors, Outcomes and Confounders
 **----------------------------------------------------------------------
 
 ** PREDICTORS**
