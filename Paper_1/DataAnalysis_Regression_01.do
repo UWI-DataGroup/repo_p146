@@ -110,6 +110,17 @@
         replace DistanceRatio_Bi = 0 if DistanceRatio <1 // unhealthy outlets are closer than healthy - BAD
         replace DistanceRatio_Bi = 1 if DistanceRatio >=1 & DistanceRatio <. // unhealthy outlets are further away than healthy - GOOD
 
+
+    ** Ratio of Unhealthy Outlets to Healthy Outlets per  buffer // > 1 is BAD: there are more unhealthy compared to healthy
+
+    gen UnhealthyRatio_3km = UnhealthyOutlets_3km / HealthyOutlets_3km
+    gen UnhealthyRatio_1km = UnhealthyOutlets_1km / HealthyOutlets_1km
+
+    
+    ** Ratio of Healthy Outlets to Healthy Outlets per  buffer // < 1 is BAD: there are less healthy compared to unhealthy
+    gen HealthyRatio_3km = HealthyOutlets_3km / UnhealthyOutlets_3km  
+    gen HealthyRatio_1km = HealthyOutlets_1km / UnhealthyOutlets_1km
+
 ** OUTCOMES
     **Adequate Fruit and Veg
         gen fv5_adequate = .
