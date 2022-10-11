@@ -82,13 +82,13 @@
     | regexm(FoodName, "WHITE RICE, LONG GRAIN, COOKED W/SALT" ) | regexm(FoodName,"WHOLE WHEAT BREAD") | regexm(FoodName, "WHOLE WHEAT CRACKER" ) | regexm(FoodName,"WONTON WRAPPER" ) ///
     | regexm(FoodName,"ROTI CHICKEN POTATO ROTI") | regexm(FoodName,"LASAGNA W/MEAT & SAUCE")) & DD_FoodCat==.
 
-    replace DD_FoodCat=2 if (regexm(FoodName,"BREADFRUIT SEED,BOILED") | regexm(FoodName,"BREADFRUIT SEED, ROASTED") | regexm(FoodName,"CASSAVA PONE") | regexm(FoodName,"CASSAVA, RAW") ///
+    replace DD_FoodCat=2 if (regexm(FoodName,"BREADFRUIT SEED, BOILED") | regexm(FoodName,"BREADFRUIT SEED, ROASTED") | regexm(FoodName,"CASSAVA, RAW") ///
     | regexm(FoodName,"COUCOU") | regexm(FoodName,"POTATO WEDGES/FRENCH FRIES") | regexm(FoodName,"GINGER ROOT, RAW") | regexm(FoodName,"HOMESTYLE CHEESY SCALLOPED POTATOES MIX, PAD") ///
     | regexm(FoodName,"POTATO, BAKED W/SALT") | regexm(FoodName,"POTATO, BOILED/MASHED") | regexm(FoodName,"POTATO SALAD") | regexm(FoodName,"SNACKS, YUCCA (CASSAVA) CHIPS, SALTED") ///
     | regexm(FoodName,"STEAMED PUDDING") | regexm(FoodName,"YAM, BOILED OR BAKED") | regexm(FoodName,"Green Banana PLANTAIN, COOKED") | regexm(FoodName,"PLANTAIN CHIPS") ///
     | regexm(FoodName,"PLANTAIN") | regexm(FoodName,"SHEPHERD'S PIE, VEGAN")) & DD_FoodCat==.
 
-    replace DD_FoodCat=3 if (regexm(FoodName,"CARROT JUICE") | regexm(FoodName,"CARROT, BOILED W/SALT") | regexm(FoodName,"CARROT, BOILED, NO SALT") | regexm(FoodName,"CARROT, RAW, GRATED") ///
+    replace DD_FoodCat=3 if (regexm(FoodName,"CARROT, BOILED W/SALT") | regexm(FoodName,"CARROT, BOILED, NO SALT") | regexm(FoodName,"CARROT, RAW, GRATED") ///
     | regexm(FoodName,"PUMPKIN FRITTERS") | regexm(FoodName,"PUMPKIN, BOILED, NO SALT, MASHED") | regexm(FoodName,"SWEET POTATO, BOILED/BAKED")) & DD_FoodCat==.
 
     replace DD_FoodCat=4 if (regexm(FoodName,"BROCCOLI, BOILED W/SALT") | regexm(FoodName,"BROCCOLI, BOILED, NO SALT") | regexm(FoodName,"LETTUCE") | regexm(FoodName,"SALAD, TOSSED W/O DRESSING") ///
@@ -96,25 +96,24 @@
 
     replace DD_FoodCat=5 if (regexm(FoodName,"ASPARAGUS, BOILED") | regexm(FoodName,"BEET, BOILED") | regexm(FoodName,"CABBAGE, BOILED, NO SALT") | regexm(FoodName,"CELERY, RAW, CHOPPED") ///
     | regexm(FoodName,"CHILI PEPPER, GREEN, RAW") | regexm(FoodName,"CHINESE STIR FRY VEGETABLE BLEND, FROZEN") | regexm(FoodName,"CHRISTOPHINE - CHAYOTE, BOILED W/SALT") ///
-    | regexm(FoodName,"CHRISTOPHINE - CHAYOTE, BOILED NO SALT") | regexm(FoodName,"COLESLAW") | regexm(FoodName,"CORN ON THE COB") | regexm(FoodName,"CORN, YELLOW, WHOLE KERNEL") ///
-    | regexm(FoodName,"CUCUMBER, PEELED, RAW") | regexm(FoodName,"EGGPLANT") | regexm(FoodName,"EGGPLANT, BOILED W/SALT") | regexm(FoodName,"GREEN BEANS, STRAINED") ///
+    | regexm(FoodName,"CHRISTOPHINE - CHAYOTE, BOILED NO SALT") | regexm(FoodName,"CHRISTOPHINE - CHAYOTE, BOILED, NO SALT") | regexm(FoodName,"COLESLAW") | regexm(FoodName,"CORN ON THE COB") | regexm(FoodName,"CORN, YELLOW, WHOLE KERNEL") ///
+    | regexm(FoodName,"CUCUMBER, PEELED, RAW") | regexm(FoodName,"EGGPLANT") | regexm(FoodName,"EGGPLANT, BOILED W/SALT") | regexm(FoodName,"GREEN BEAN, STRAINED") ///
     | regexm(FoodName,"JALAPENO PEPPER") | regexm(FoodName,"MIXED VEGETABLES, BOILED W/SALT") | regexm(FoodName,"MUSHROOM, SLICED, BROILED IN BUTTER, CANNED") ///
     | regexm(FoodName,"OKRA, BOILED W/SALT") | regexm(FoodName,"OKRA") | regexm(FoodName,"ONION RINGS") | regexm(FoodName,"ONION") | regexm(FoodName,"PEPPERS, HOT CHILI, RED & GREEN, RAW") ///
     | regexm(FoodName,"PICKLE CUCUMBER") | regexm(FoodName,"RADISH, RAW") | regexm(FoodName,"VEGETABLE SOUP") | regexm(FoodName,"MIXED VEGETABLES, BOILED W/SALT") ///
-    | regexm(FoodName,"SUMMER SQUASH, BOILED, NO SALT") | regexm(FoodName,"TOMATO, RED, RIPE, RAW") | regexm(FoodName,"VEGETABLE SPING ROLLS, VEGAN") ///
-    | regexm(FoodName,"ZUCCHINI W/SKIN, BOILED W/SALT")) & DD_FoodCat==.
+    | regexm(FoodName,"SUMMER SQUASH, BOILED, NO SALT") | regexm(FoodName,"TOMATO, RED, RIPE, RAW") | regexm(FoodName,"ZUCCHINI W/SKIN, BOILED W/SALT")) & DD_FoodCat==.
 
-    replace DD_FoodCat=6 if (regexm(FoodName,"CANTALOUPE, RAW""FRUIT BOWL, DICED PEACHES") | regexm(FoodName,"MANGO, RAW") | regexm(FoodName,"MELON, CANTELOUPE, RAW") ///
+    replace DD_FoodCat=6 if (regexm(FoodName,"CANTALOUPE, RAW") | regexm(FoodName,"FRUIT BOWL, DICED PEACHES") | regexm(FoodName,"MANGO, RAW") | regexm(FoodName,"MELON, CANTELOUPE, RAW") ///
     | regexm(FoodName,"PAPAYA, RAW") | regexm(FoodName,"PEACH, RAW")) & DD_FoodCat==.
    
     replace DD_FoodCat=7 if (regexm(FoodName,"AVOCADO, RAW") | regexm(FoodName,"ACKEES - LITCHI, RAW") | regexm(FoodName,"APPLE W/SKIN, RAW") | regexm(FoodName,"BANANA, RAW") ///
-    | regexm(FoodName,"BLACKBERRIES, FROZEN, BAG") | regexm(FoodName,"BLUEBERRY") | regexm(FoodName,"CARAMBOLA, RAW (STARFRUIT)") | regexm(FoodName,"CHOKECHRRIES, RAW, PITTED") ///
+    | regexm(FoodName,"BLACKBERRIES, FROZEN, BAG") | regexm(FoodName,"BLUEBERRY") | regexm(FoodName,"CARAMBOLA, RAW (STARFRUIT)") | regexm(FoodName,"CHOKECHERRIES, RAW, PITTED") ///
     | regexm(FoodName,"COCONUT MEAT, RAW") | regexm(FoodName,"DOCK, BOILED (SORREL)") | regexm(FoodName,"FIG, RAW") | regexm(FoodName,"GOLDEN APPLE") | regexm(FoodName,"GOLDEN APPLE, RAW") ///
     | regexm(FoodName,"GOOSEBERRY, LIGHT SYRUP PACK") | regexm(FoodName,"GRAPE, AMERICAN-TYPE, RAW") | regexm(FoodName,"GUAVA, COMMON, RAW") | regexm(FoodName,"HONEYDEW MELON, RAW") ///
     | regexm(FoodName,"KIWIFRUIT, GOLD, RAW") | regexm(FoodName,"LIME, RAW") | regexm(FoodName,"LITCHI, RAW") | regexm(FoodName,"ORANGE, FLORIDA, RAW") | regexm(FoodName,"PEAR, RAW") ///
-    | regexm(FoodName,"PINEAPPLE, LIGHT SYRUP") | regexm(FoodName,"PINEAPPLE, RAW") | regexm(FoodName,"PLUM, RAW") | regexm(FoodName,"POMEGRANTE, RAW") ///
+    | regexm(FoodName,"PINEAPPLE, LIGHT SYRUP") | regexm(FoodName,"PINEAPPLE, RAW") | regexm(FoodName,"PLUM, RAW") | regexm(FoodName,"POMEGRANATE, RAW") ///
     | regexm(FoodName,"PRUNE, DRIED, UNCOOKED (DRIED PLUM)") | regexm(FoodName,"RAISIN, SEEDLESS") | regexm(FoodName,"SOURSOP, RAW") | regexm(FoodName,"STRAWBERRY, RAW") ///
-    | regexm(FoodName,"SUGAR-APPLE, RAW") | regexm(FoodName,"TAMARIND, RAW") | regexm(FoodName,"TANGERINE, MANARIN, RAW")) & DD_FoodCat==.
+    | regexm(FoodName,"SUGAR-APPLE, RAW") | regexm(FoodName,"TAMARIND, RAW") | regexm(FoodName,"TANGERINE, MANDARIN, RAW")) & DD_FoodCat==.
 
     replace DD_FoodCat=8 if (regexm(FoodName, "LIVER, STEWED")) & DD_FoodCat==. 
 
@@ -136,7 +135,7 @@
     | regexm(FoodName,"BLACKEYED PEA (COWPEA)") | regexm(FoodName,"GARBANZOS") | regexm(FoodName,"ORGANIC NASOYA SUPER FIRM CUBED TOFU") ///
     | regexm(FoodName,"PIGEON PEA, BOILED W/SALT (RED GRAM)") | regexm(FoodName,"SOY MILK")) & DD_FoodCat==.
 
-    replace DD_FoodCat=13 if (regexm(FoodName,"FLAX SEEDS") | regexm(FoodName,"DRIED FRUITS & NUTS, RTE") | regexm(FoodName,"NUTS DRIED FRUIT & NUTS, RTE") ///
+    replace DD_FoodCat=13 if (regexm(FoodName,"FLAX SEEDS") | regexm(FoodName,"DRIED FRUIT & NUTS, RTE") | regexm(FoodName,"NUTS DRIED FRUIT & NUTS, RTE") ///
     | regexm(FoodName,"TRAIL MIX, MIXED NUTS & RAISINS") | regexm(FoodName,"COCONUT MILK, RAW") | regexm(FoodName,"ALMOND MEAL/FLOUR") | regexm(FoodName,"ALMONDS, NO SALT") ///
     | regexm(FoodName,"ALMOND, HONEY ROASTED") | regexm(FoodName,"CASHEWS, NO SALT") | regexm(FoodName,"CASHEWS, SALTED") | regexm(FoodName,"MACADAMIA NUT, DRIED (BUSHNUT)") ///
     | regexm(FoodName,"PEANUTS, SALTED") | regexm(FoodName,"PEANUTS, NO SALT") | regexm(FoodName,"PEANUT BUTTER") | regexm(FoodName,"PUMPKIN & SQUASH SEED, DRIED") ///
@@ -145,7 +144,7 @@
     replace DD_FoodCat=14 if (regexm(FoodName,"FLAVOURED MILKS") | regexm(FoodName,"CHEDDAR CHEESE") | regexm(FoodName,"SWISS CHEESE") | regexm(FoodName,"EVAPORATED MILK") ///
     | regexm(FoodName,"COW'S MILK, LESS FAT, FLUID, 2% MILKFAT W/O ADDED VIT-A & D") | regexm(FoodName,"COW'S MILK, WHOLE, 3.25% MILKFAT W/O ADDED VIT-A & D") ///
     | regexm(FoodName,"MILK, COW'S, CONDENSED, SWEETENED") | regexm(FoodName,"MILK, COW'S, NONFAT, EVAPORATED (SKIM)") | regexm(FoodName,"MILK, DRY, SKIM, POWDER, INSTANT (NONFAT)") ///
-    | regexm(FoodName,"MILK, DRY, SKIM, POWDER, REGULAR (NONFAT)") | regexm(FoodName,"MILK, GOAT'S") | regexm(FoodName,"YOGURT, FRUIT, LOWFAT")) & DD_FoodCat==.
+    | regexm(FoodName,"MILK, DRY, SKIM, POWDER, REGULAR (NONFAT)") | regexm(FoodName,"MILK, GOAT'S") | regexm(FoodName,"YOGURT, FRUIT, LOWFAT") | regexm(FoodName, "MILK, COW'S, NONFAT, EVAPORATED (SKIM)")) & DD_FoodCat==.
 
     replace DD_FoodCat=15 if (regexm(FoodName,"GARLIC BUTTER") | regexm(FoodName,"BUTTER, REGULAR, UNSALTED") | regexm(FoodName,"MARGARINE") | regexm(FoodName,"COCONUT OIL, UNREFINED") ///
     | regexm(FoodName,"MAYONNAISE, REAL") | regexm(FoodName,"SOYBEAN OIL") | regexm(FoodName,"VEGETABLE CORN OIL")) & DD_FoodCat==.
@@ -161,14 +160,15 @@
     | regexm(FoodName,"VANILLA WAFER") | regexm(FoodName,"DANISH PASTRY") | regexm(FoodName,"BANANA BREAD, PFR") | regexm(FoodName,"BREAKFAST TART, LOWFAT") ///
     | regexm(FoodName,"CAKE, POUND, PANQUE CASERO") | regexm(FoodName,"CHEESECAKE") | regexm(FoodName,"CHOCOLATE CAKE") | regexm(FoodName,"CINNAMON SCONE") | regexm(FoodName,"COCONUT BREAD") ///
     | regexm(FoodName,"CRANBERRY SAUCE") | regexm(FoodName,"DONUT") | regexm(FoodName,"FLAN, CARAMEL CUSTARD, PFR") | regexm(FoodName,"FRENCH VANILLA SWIRL BREAD") ///
-    | regexm(FoodName,"FRUITCAKE") | regexm(FoodName,"GELATIN MIX") | regexm(FoodName,"GREAT CAKE") | regexm(FoodName,"FRUIT PIE, SLICE") | regexm(FoodName,"TURNOVER")) & DD_FoodCat==.
+    | regexm(FoodName,"FRUITCAKE") | regexm(FoodName,"GELATIN MIX") | regexm(FoodName,"GREAT CAKE") | regexm(FoodName,"FRUIT PIE, SLICE") | regexm(FoodName,"TURNOVER") ///
+    | regexm(FoodName,"CASSAVA PONE")) & DD_FoodCat==.
     
     replace DD_FoodCat=17 if (regexm(FoodName,"MANGO JUICE") | regexm(FoodName,"CRANBERRY JUICE") | regexm(FoodName,"APPLE JUICE, UNSWEETENED") ///
     | regexm(FoodName,"PASSION FRUIT JUICE, RAW") | regexm(FoodName,"FRUIT 'N' YOGURT SMOOTHIE, STRAWBERRY KIWI") | regexm(FoodName,"GRAPE JUICE") |regexm(FoodName,"JUICE MIXED FRUIT JUICE") ///
     | regexm(FoodName,"GRAPEFRUIT JUICE") | regexm(FoodName,"ORANGE JUICE, UNSWEETENED") |  regexm(FoodName,"JUICE PEAR JUICE") | regexm(FoodName,"PINEAPPLE JUICE, UNSWEETENED") ///
     | regexm(FoodName,"LEMON JUICE, RAW") | regexm(FoodName,"LIME JUICE, RAW") | regexm(FoodName,"WILD BERRY JUICE") | regexm(FoodName,"PRUNE JUICE") ///
     | regexm(FoodName,"MIXED BERRY FRUIT SMOOTHIE") | regexm(FoodName,"PINEAPPLE JUICE") | regexm(FoodName,"ORANGE & PINEAPPLE JUICE") | regexm(FoodName,"PEAR JUICE") ///
-    | regexm(FoodName,"CAESAR DRESSING") | regexm(FoodName,"DRESSING, RANCH") | regexm(FoodName,"BBQ SAUCE") | regexm(FoodName,"CATSUP / KETCHUP") | regexm(FoodName,"CHOPPED SEASONING") ///
+    | regexm(FoodName,"CAESAR DRESSING") | regexm(FoodName,"DRESSING, RANCH") | regexm(FoodName,"BBQ SAUCE") | regexm(FoodName,"CATSUP/KETCHUP") | regexm(FoodName,"CHOPPED SEASONING") ///
     | regexm(FoodName,"HOT PEPPER SAUCE, ORIGINAL") | regexm(FoodName,"SALSA, RTS") | regexm(FoodName,"PASTA SAUCE, 7 HERB TOMATO") | regexm(FoodName,"ALOE VERA JUICE") ///
     | regexm(FoodName,"PINA COLADA") | regexm(FoodName,"FRUIT SLUSH") | regexm(FoodName,"GINGER ALE") | regexm(FoodName,"COCA COLA") | regexm(FoodName,"CREAM SODA") ///
     | regexm(FoodName,"GINGER BEER") | regexm(FoodName,"DRINK LEMONADE") | regexm(FoodName,"MAUBY DRINK") | regexm(FoodName,"ORANGE FLAVOUR DRINK") ///
@@ -187,19 +187,28 @@
     | regexm(FoodName,"TEA, BLACK") | regexm(FoodName,"TEA, BREWED, DECAFFEINATED (BLACK TEA)") | regexm(FoodName,"TEA, GINSENG PLUS, BREWED") | regexm(FoodName,"TEA, GREEN") ///
     | regexm(FoodName,"TEA, HERBAL") | regexm(FoodName,"TEA, LEMON") | regexm(FoodName,"TEA, PEPPERMINT, BREWED") | regexm(FoodName,"VINEGAR, APPLE CIDER") | regexm(FoodName,"WINE") ///
     | regexm(FoodName,"WORCESTERSHIRE") | regexm(FoodName,"LEMON LIME SPRITZER") | regexm(FoodName,"SODA LEMON-LIME SODA, CARBONATED") | regexm(FoodName,"TROPICAL FRUIT FRUIT SMOOTHIE") ///
-    | regexm(FoodName,"BLENDED SMOOTHIE - BANANA OATS MILK HONEY YOGURT") | regexm(FoodName,"SMOOTHIE")) & DD_FoodCat==.
+    | regexm(FoodName,"BLENDED SMOOTHIE - BANANA OATS MILK HONEY YOGURT") | regexm(FoodName,"SMOOTHIE") | regexm(FoodName,"BLENDED CARROT BEET CELERY CUCUMBER APPLES W-OUT SUGAR") ///
+    | regexm(FoodName,"BLENDED SHAKE - CARROT BEET CELERY CUCUMBER APPLES W-OUT SUGAR") | regexm(FoodName, "BLENDED SHAKE - CARROT BEET CELERY CUCUMBER APPLES W-OUT SUGAR") | regexm(FoodName,"CARROT JUICE")) & DD_FoodCat==.
     
-   
+
+    replace DD_FoodCat=18 if (regexm(FoodName,"VEGGIE BURGER") | regexm(FoodName, "TORTILLA CHIPS") | regexm(FoodName, "CHEESY SNACKS") | regexm(FoodName, "BREAKFAST WRAP, VEGETABLE MEDLEY") ///
+    | regexm(FoodName, "POTATO CHIPS") | regexm(FoodName, "SNACKS, YUCCA (CASSAVA) CHIPS, SALTED") | regexm(FoodName, "VEGETABLE SPRING ROLLS, VEGAN")| regexm(FoodName, "WATER") | regexm(FoodName, "FRUIT COCKTAIL, EXTRA HEAVY SYRUP")) & DD_FoodCat==.
+ 
+ 
+   ** Adding Labels
+    label variable DD_FoodCat "Dietatry Diversity Food Categories"
+    label define DD_FoodCat 1 "Cereals" 2 "White tubers and roots, plantains" 3 "Vitamin A Rich Veg" 4 "Dark Green Leafy Veg" 5 "Other Veg" 6 "Vitamin A Rich Fruits" ///
+     7 "Other Fruits" 8 "Organ Meat" 9 "Flesh Meat" 10 "Eggs" 11 "Fish and Seafood" 12 "Legumes" 13 "Nuts & Seeds" 14 "Milk and Milk Products" 15 "Oils and Fats" ///
+     16 "Sweets" 17 "Spices, Condiments and Beverages" 18 "Other"
+    label values DD_FoodCat DD_FoodCat
+
 /*
 // Questions/Problems
 // 1. Whenever a word occurs twice, it replaces the other. For example "HONEY NUT CHERRIOS" is categorized as a Cereal but "HONEY" is in Sweets, when I run the do-file "HONEY NUT CHEERIOS" Is then replaced as a sweet because of the word "HONEY"
 // 2. Error at the end says invalid syntax
 // 3. Some just seem to be missing.. Eg. "BBQ SAUCE" and I'm not sure why
     
-    ** Adding Labels
-    label variable DD_FoodCat "Dietatry Diversity Food Categories"
-    label define DD_FoodCat 1 "Cereals" 2 "White tubers and roots, plantains" 3 "Vitamin A Rich Veg" 4 "Dark Green Leafy Veg" 5 "Other Veg" 6 "Vitamin A Rich Fruits" 7 "Other Fruits" 8 "Organ Meat" 9 "Flesh Meat" 10 "Eggs" 11 "Fish and Seafood" 12 "Legumes" 13 "Nuts & Seeds" 14 "Milk and Milk Products" 15 "Oils and Fats" 16 "Sweets" 17 "Spices, Condiments and Beverages"
-    label values DD_FoodCat DD_FoodCat
+    
 
 
     **--------------------------------------------------------------------------------
