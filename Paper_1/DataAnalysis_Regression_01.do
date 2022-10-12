@@ -510,8 +510,68 @@ regress BMI DistanceRatio sex i.educ
 regress BMI DistanceRatio car sex i.educ
 
 **-----------------------------------------------------------------------
-** Addind Individual Dietary Diversity as a predictor variable
+** Addind Individual Dietary Diversity and total food groups consumed as a predictor variable
 **----------------------------------------------------------------------
+
+drop if pid==.
+
 
 ** Individual Dietary Diversity
     merge 1:1 pid using "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\IDD_count.dta"
+
+    drop _merge
+
+** Total Food Groups
+
+merge 1:1 pid using "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\TotalFoodGroups_count.dta"
+drop _merge
+
+** Dropping missing fields
+drop if nIDD==. & nTotalGroups==.
+
+
+**-----------------------------------------------------------------
+** Regressions using IDD and Total Food Groups as a predictor
+**------------------------------------------------------------------
+
+** Having adequate dietary diversity
+gen adequateIDD=.
+replace adequateIDD = 1 if nIDD >4 & nIDD <.
+replace adequateIDD = 0 if nIDD <=4
+label variable adequateIDD "Adequate Dietary Diversity"
+label define adequateIDD 1 "Adequate IDD" 0 "Inadeqaute IDD"
+label values adequateIDD adequateIDD
+order adequateIDD, after(nIDD)
+
+** Having High Dietary Diversity
+gen highIDD=.
+replace highIDD=1 if nIDD >=7 & nIDD <.
+replace highIDD=0 if nIDD <7
+order highIDD, after(adequateIDD)
+label variable highIDD "High Dietary Diversity"
+label define highIDD 1 "High IDD" 0 "Adequate / Low IDD"
+label values highIDD highIDD
+
+** Having Low Dietary Diversity
+gen LowIDD=.
+replace LowIDD=1 if nIDD <=4
+replace LowIDD=0 if nIDD >4 & nIDD<.
+order LowIDD, after(adequateIDD)
+label variable LowIDD "Low Dietary Diversity"
+label define LowIDD 1 "Low IDD" 0 "Adequate / High IDD"
+label values LowIDD LowIDD
+
+
+** Regressions
+
+regress nIDD DistanceRatio_Bi
+regress nIDD DistanceRatio_Bi sex educ car
+
+logistic adequateIDD DistanceRatio_Bi
+logistic adequateIDD DistanceRatio_Bi sex educ car
+
+logistic highIDD DistanceRatio_Bi
+logistic highIDD DistanceRatio_Bi sex educ car
+
+logistic LowIDD DistanceRatio_Bi
+logistic LowIDD DistanceRatio_Bi sex educ car
