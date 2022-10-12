@@ -330,7 +330,7 @@
     **-------------------------------------------------------------------------
     ** PART 5: Total Food Groups Consumed
     **---------------------------------------------------------------------------
-
+/*
     keep pid DD_FoodCat
     sort pid DD_FoodCat
     duplicates drop (pid DD_FoodCat), force
@@ -342,6 +342,6 @@
     ** PART 6: Saving appropriate dataset
     **---------------------------------------------------------------------------------
 
-    //save "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\IDD_count.dta"
+    //save "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\IDD_count.dta", replace
 
-    save "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\TotalFoodGroups_count.dta"
+    save "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\TotalFoodGroups_count.dta" , replace
