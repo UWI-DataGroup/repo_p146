@@ -132,7 +132,8 @@
     ** BMI Calculation
         gen height_meters = height/100
         gen BMI = weight / (height_meters^2)
-
+        
+    
 ** CONFOUNDERS
     ** Car
         gen car = .
@@ -143,9 +144,7 @@
         label define sex 1 "Female" 0 "Male", replace
         recode sex 2=0
 
-    ** Education
-
-    ** Age
+    
 
 **--------------------------------------------------------------
 ** PART 4: REGRESSION ANALYSES
@@ -509,3 +508,10 @@ regress BMI DistanceRatio car i.educ
 regress BMI DistanceRatio sex i.educ
 
 regress BMI DistanceRatio car sex i.educ
+
+**-----------------------------------------------------------------------
+** Addind Individual Dietary Diversity as a predictor variable
+**----------------------------------------------------------------------
+
+** Individual Dietary Diversity
+    merge 1:1 pid using "X:\The University of the West Indies\DataGroup - repo_data\data_p146\version01\1-input\Salt-Use\SW_analysis\IDD_count.dta"
