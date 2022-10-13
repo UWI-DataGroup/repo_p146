@@ -575,3 +575,18 @@ logistic highIDD DistanceRatio_Bi sex educ car
 
 logistic LowIDD DistanceRatio_Bi
 logistic LowIDD DistanceRatio_Bi sex educ car
+
+**------------------------------------------------------------------
+** Accounting for clustering
+**------------------------------------------------------------------
+
+
+logistic adequateIDD DistanceRatio_Bi,vce(cluster ed)
+ 
+logistic adequateIDD DistanceRatio_Bi sex educ car,vce(cluster ed)
+
+logistic highIDD DistanceRatio_Bi,vce(cluster ed)
+logistic highIDD DistanceRatio_Bi sex educ car,vce(cluster ed)
+
+logistic LowIDD DistanceRatio_Bi,vce(cluster ed)
+logistic LowIDD DistanceRatio_Bi sex educ car,vce(cluster ed)
