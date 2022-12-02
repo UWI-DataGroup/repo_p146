@@ -36,7 +36,7 @@
 
     use "`datapath'\Combined_EDs_03.dta"
 
-   /* ** PART 2: Poisson Regression
+ /*  ** PART 2: Poisson Regression
 
     ** Univariate analysis
     poisson fv5 HealthyOutlets_1km
@@ -150,7 +150,7 @@
 ** PART 4: REGRESSION ANALYSES
 **---------------------------------------------------------------
 
-
+/*
 ** 1KM BUFFER - HEALTHY FOOD OUTLETS
 
 ** Adequate Fruit and Veg
@@ -507,8 +507,8 @@ regress BMI DistanceRatio car sex
 regress BMI DistanceRatio car i.educ
 regress BMI DistanceRatio sex i.educ
 
-regress BMI DistanceRatio car sex i.educ
-
+regress BMI DistanceRatio car sex i.educ */
+/*
 **-----------------------------------------------------------------------
 ** Addind Individual Dietary Diversity and total food groups consumed as a predictor variable
 **----------------------------------------------------------------------
@@ -590,3 +590,11 @@ logistic highIDD DistanceRatio_Bi sex educ car,vce(cluster ed)
 
 logistic LowIDD DistanceRatio_Bi,vce(cluster ed)
 logistic LowIDD DistanceRatio_Bi sex educ car,vce(cluster ed)
+
+
+
+**-------------------------------------------------------------------
+** Doing over poisson regression for fruit and veg servings
+**----------------------------------------------------------------
+poisson servings DistanceRatio_Bi 
+poisson servings DistanceRatio_Bi car sex i.educ
